@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Editor from "@/components/Editor";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   const [code, setCode] = useState(
@@ -10,11 +11,8 @@ export default function Home() {
 
   return (
     <main className="h-screen bg-gray-900">
-      <Editor
-        language="python"
-        value={code}
-        onChange={setCode}
-      />
+      <Navbar />
+      <Editor language="python"value={code} onChange={setCode}/>
     </main>
   );
 }
