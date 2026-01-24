@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import LanguageContextProvider from "@/contexts/Language/LanguageContextProvider";
 
 export default function RootLayout({
   children,
@@ -9,7 +10,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <LanguageContextProvider>
+          {children}
+        </LanguageContextProvider>
+        
       </body>
     </html>
   );
