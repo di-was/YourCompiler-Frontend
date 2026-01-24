@@ -1,18 +1,18 @@
 "use client";
 
 import {Editor as MonacoEditor} from "@monaco-editor/react";
+import useLanguageContext from "@/contexts/Language/UseLanguageContext";
 
 type EditorProps = {
-  language: string;
   value: string;
   onChange: (value: string) => void;
 };
 
 export default function Editor({
-  language,
   value,
   onChange,
 }: EditorProps) {
+  const {language, version, setLanguage, setVersion} = useLanguageContext();
   return (
     <MonacoEditor
       height="50%"
