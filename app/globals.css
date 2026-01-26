@@ -3,3 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@theme {
+  --color-primary: #22577a;
+  --color-secondary: #57cc99;
+  --color-text: #cad2c5;
+  --color-border: $FFFFF;
+}
