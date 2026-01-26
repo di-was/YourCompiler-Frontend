@@ -1,5 +1,5 @@
 export default function VersionSelector() {
     return (
-        <h1>Version Selector</h1>
+        <h1 className="ml-10">Version Selector</h1>
     );
 }
