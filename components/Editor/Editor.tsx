@@ -15,7 +15,32 @@ export default function Editor() {
           width="100%"
           language={language}
           value={code}
-          theme="vs-dark"
+                beforeMount={(monaco) => {
+        monaco.editor.defineTheme("myTheme", {
+          base: "vs-dark",
+          inherit: true,
+          rules: [
+            { token: "comment", foreground: "#a0eb75" },
+            { token: "string", foreground: "#eda78c" },
+            { token: "keyword", foreground: "#ed63e1" },
+            { token: "number", foreground: "#d0efc0" },
+          ],
+          colors: {
+            "editor.background": "#111827",
+            "editor.foreground": "#e1dada",
+            "editorLineNumber.foreground": "#7180a9",
+            "editorCursor.foreground": "#FFCC00",
+            "editor.selectionBackground": "#264F78",
+            "editor.lineHighlightBackground": "#111A33",
+            "editorIndentGuide.background": "#1E2A4A",
+            "editorIndentGuide.activeBackground": "#3A4B7A",
+          },
+          
+        });
+      }}
+      onMount={(editor, monaco) => {
+        monaco.editor.setTheme("myTheme");
+      }}
           onChange={(val) => setCode(val ?? "")}
           options={{
             minimap: { enabled: false },
