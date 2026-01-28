@@ -8,14 +8,19 @@ import {Group, Panel, Separator} from "react-resizable-panels";
 
 
 export default function Home() {
- 
+  const [navbarLayout, setNavbarLayout] = useState<[number, number]>([55, 45])
 
   return (
     <div className="h-screen w-screen flex flex-col bg-gray-900">
-      <Navbar />
+      <Navbar layout={navbarLayout} />
       
       <div className="flex-[9]">
-        <Group orientation="horizontal" className="h-full w-full">
+        <Group orientation="horizontal" className="h-full w-full" onLayoutChange={(size) => 
+         {
+            const values = Object.values(size) as number[];
+            setNavbarLayout([values[0], values[1]])
+            
+        }}>
             <Panel defaultSize={600} minSize={400}>
               <Editor />
             </Panel>  
