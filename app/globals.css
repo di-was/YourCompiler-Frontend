@@ -6,6 +6,7 @@
 @theme {
   --color-primary: #111827;
   --color-secondary: #1e293b;
+  --color-distinctive: #42a5bdbf;
   --color-text: #cad2c5;
   --color-border: $FFFFF;
 }
