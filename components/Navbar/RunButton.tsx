@@ -28,9 +28,9 @@ export default function RunButton() {
     }
     return (
         <button onClick={handleClick}
-        className="ml-10 px-3 py-1 text-white rounded-md border-3 border-secondary
-                   hover:bg-secondary hover:cursor-pointer
-                   active:scale-95 active:brightness-80 transition">
+        className="ml-10 px-3 py-1 text-white rounded-md border-3 border-secondary bg-distinctive
+                   hover:brightness-120 hover:cursor-pointer
+                   ">
             Run
         </button>
     );  
