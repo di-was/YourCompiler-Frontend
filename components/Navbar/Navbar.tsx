@@ -21,8 +21,10 @@ export default function Navbar({layout}: NavbarProps) {
             gridTemplateColumns: `${leftPanelSize}% 4px ${rightPanelSize}%`,
             alignItems: "center",
         }}>
-            <div className="px-4 flex items-center gap-4">
-                <LanguageSelector value={language} onChange={setLanguage} />
+            <div className="px-4 flex items-center gap-4 justify-between">
+                <div>
+                    <LanguageSelector value={language} onChange={setLanguage} />
+                </div>
                 <RunButton/>
             </div>
 
