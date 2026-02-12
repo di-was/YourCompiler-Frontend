@@ -4,6 +4,8 @@ import LanguageSelector from "@/components/Navbar/LanguageSelector";
 import VersionSelector from "@/components/Navbar/VersionSelector";
 import useLanguageContext from "@/contexts/Language/UseLanguageContext";
 import RunButton from "./RunButton";
+import ClearOutputButton from "./ClearOutputButton";
+import CopyCodeButton from "./CopyCodeButton";
 
 
 type NavbarProps = {
@@ -25,15 +27,16 @@ export default function Navbar({layout}: NavbarProps) {
                 <div>
                     <LanguageSelector value={language} onChange={setLanguage} />
                 </div>
-                <RunButton/>
+                <div className="flex items-center gap-4">
+                     <CopyCodeButton/>
+                    <RunButton/>
+                </div>
             </div>
 
             <div className="ml-auto px-4" />
 
-            <div className="px-3 flex items-center justify-between">
-                <button className="bg-gray-700 text-white px-3 py-1 rounded-md hover:bg-gray-600">
-                    Sign In
-                </button>
+            <div className="px-3 flex items-center justify-end">
+                <ClearOutputButton/>
             </div>
         </div>
     );
