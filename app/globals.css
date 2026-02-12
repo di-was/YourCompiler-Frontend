@@ -9,4 +9,31 @@
   --color-distinctive: #42a5bdbf;
   --color-text: #cad2c5;
   --color-border: $FFFFF;
+
+    --animate-fade-in: fade-in 140ms ease-out;
+  --animate-zoom-in: zoom-in 140ms ease-out;
+  --animate-dropdown-in: dropdown-in 160ms ease-out;
+  --animate-dropdown-out: dropdown-out 120ms ease-in;
+
+  /* ✅ 2) Define keyframes INSIDE @theme */
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes zoom-in {
+    from { transform: scale(0.98); }
+    to   { transform: scale(1); }
+  }
+
+  /* Nice for dropdown menus (opacity + slight translate) */
+  @keyframes dropdown-in {
+    from { opacity: 0; transform: translateY(-4px) scale(0.99); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @keyframes dropdown-out {
+    from { opacity: 1; transform: translateY(0) scale(1); }
+    to   { opacity: 0; transform: translateY(-4px) scale(0.99); }
+  }
 }
