@@ -1,22 +1,24 @@
 import UseExecutionContext from "@/contexts/Execution/UseExecutionContext";
 import useLanguageContext from "@/contexts/Language/UseLanguageContext";
 import { useState } from "react";
+import { API_BASE_URL } from "@/config/env";
 
 export default function RunButton() {
     const [running, setRunning] = useState(false);
     const {language, setLanguage} = useLanguageContext();
     const {code, setOutput} = UseExecutionContext();
 
+ 
     const handleClick = async () => {
         setRunning(true);
 
         try {
-            const res = await fetch(`http://localhost:5270/api/compile/${language}`, {
+            const res = await fetch(`${API_BASE_URL}/api/compile/${language}`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json",
                           "Accept": "*/*",
                 },
-                body: JSON.stringify(code),
+                body: JSON.stringify({code, version: "defaultVersion"}),
             });
             const data = await res.text();
             setOutput(data);
