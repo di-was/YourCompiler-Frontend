@@ -13,7 +13,7 @@ export default function RunButton() {
         setRunning(true);
 
         try {
-            const res = await fetch(`${API_BASE_URL}/api/compile/${language}`, {
+            const res = await fetch(`/api/compile/${language}`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json",
                           "Accept": "*/*",

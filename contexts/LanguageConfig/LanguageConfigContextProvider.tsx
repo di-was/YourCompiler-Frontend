@@ -22,7 +22,7 @@ export default function LanguageConfigContextProvider({children}: LanguageConfig
 
     const fetchLanguages = async () => {
         try {
-            const res = await fetch(`${API_BASE_URL}/api/getAvailableLanguages`, {cache: "no-store"});
+            const res = await fetch(`/api/getAvailableLanguages`, {cache: "no-store"});
             if (!res.ok) throw new Error("Failed to fetch Language configurations");
             const response = (await res.json()) as ResponseType;
             // setters
