@@ -1,7 +1,8 @@
 "use client";
 
 import * as Select from "@radix-ui/react-select";
-import { LANGUAGES } from "@/components/languages";
+import useLanguageConfig from "@/contexts/LanguageConfig/useLanguageConfig";
+import UseExecutionContext from "@/contexts/Execution/UseExecutionContext";
 
 type Props = {
   value: string;
@@ -9,13 +10,21 @@ type Props = {
 };
 
 export default function LanguageSelector({ value, onChange }: Props) {
-  const current = LANGUAGES.find((l) => l.id === value)?.label ?? "Select";
+  const {data} = useLanguageConfig();
+  const {setCode} = UseExecutionContext();
+  const languages = Object.keys(data);
+
+
+  const current = value || "select";
 
   return (
     <label className="flex items-center gap-2">
       <span>Language</span>
 
-      <Select.Root value={value} onValueChange={onChange}>
+      <Select.Root value={value} onValueChange={(newValue) => {
+        onChange(newValue);
+        setCode(data[newValue].skeletonCode);
+      }}>
         <Select.Trigger
           className="
             inline-flex h-8 w-[150px] items-center justify-between
@@ -58,10 +67,10 @@ export default function LanguageSelector({ value, onChange }: Props) {
             "
           >
             <Select.Viewport className="p-1">
-              {LANGUAGES.map((l) => (
+              {languages.map((l) => (
                 <Select.Item
-                  key={l.id}
-                  value={l.id}
+                  key={l}
+                  value={l}
                   className="
                     relative flex cursor-pointer select-none items-center
                     rounded-sm px-2 py-1.5 text-sm text-white/90
@@ -70,7 +79,7 @@ export default function LanguageSelector({ value, onChange }: Props) {
                     data-[state=checked]:bg-white/10
                   "
                 >
-                  <Select.ItemText>{l.label}</Select.ItemText>
+                  <Select.ItemText>{l}</Select.ItemText>
                 </Select.Item>
               ))}
             </Select.Viewport>
