@@ -29,11 +29,24 @@ export default function RunButton() {
         };
     }
     return (
-        <button onClick={handleClick}
-        className="px-3 py-1 text-white rounded-md border-3 border-secondary bg-distinctive
-                   hover:brightness-120 hover:cursor-pointer
-                   ">
-            Run
+        <button disabled={running} onClick={handleClick}
+            className={`px-3 py-1 text-white rounded-md border-3 border-secondary bg-distinctive
+                    hover:brightness-120
+                    ${running 
+                        ? "opacity-50 cursor-not-allowed"
+                        : "hover:brightness-120 hover:cursor-pointer"}
+                    `}>
+            <span className="relative flex items-center justify-center">
+
+                {running && (
+                <div className="absolute w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                )}
+
+                <span className={running ? "invisible" : ""}>
+                Run
+                </span>
+
+            </span>
         </button>
     );  
 }
